@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "@nuxtjs/sanity",
     "@pinia/nuxt",
     "@nuxtjs/color-mode",
+    "@nuxtjs/tailwindcss",
   ],
   primevue: {
     options: {
@@ -37,7 +38,7 @@ export default defineNuxtConfig({
         "Dropdown",
       ],
     },
-    importPT: { from: "~/presets/webcnxnz" },
+    importPT: { from: "~~/app/presets/webcnxnz" },
   },
   nitro: {
     routeRules: {
@@ -52,7 +53,7 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["stores"],
   },
-  css: ["~/assets/css/base.css", "primeicons/primeicons.css"],
+  css: ["~~/app/assets/css/base.css", "primeicons/primeicons.css"],
   sanity: {
     projectId: process.env.SANITY_STUDIO_PROJECT_ID,
     dataset: process.env.SANITY_STUDIO_DATASET,
