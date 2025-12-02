@@ -1,18 +1,26 @@
+const plugin = require('tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "app/**/*.{js,ts}",
+    "components/**/*.{vue,js,ts}",
+    "layouts/**/*.vue",
+    "pages/**/*.vue",
+    "composables/**/*.{js,ts}",
+    "plugins/**/*.{js,ts}",
     "App.{js,ts,vue}",
     "app.{js,ts,vue}",
     "Error.{js,ts,vue}",
     "error.{js,ts,vue}",
+    "content/**/*.md",
+    "presets/**/*.{js,vue,ts}",
   ],
   theme: {
-    fontFamily: {
-      brand: "Graduate, 'Noto Serif',  system-ui, sans-serif",
-      system: "system-ui, sans-serif",
-    },
     extend: {
+      fontFamily: {
+        brand: ["Graduate", "Noto Serif", "system-ui", "sans-serif"],
+        system: ["Inter", "system-ui", "sans-serif"],
+      },
       colors: {
         "primary-50": "var(--primary-50)",
         "primary-100": "var(--primary-100)",
@@ -41,5 +49,13 @@ module.exports = {
     },
   },
   darkMode: "class",
-  plugins: [require("@tailwindcss/container-queries")],
+  plugins: [
+    require("@tailwindcss/container-queries"),
+    plugin(function({ addBase, theme }) {
+      addBase({
+        'h1, h2, h3, h4, h5, h6': { fontFamily: theme('fontFamily.brand') },
+        'body': { fontFamily: theme('fontFamily.system') },
+      })
+    })
+  ],
 };
