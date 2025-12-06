@@ -17,7 +17,7 @@ const { data: team } = await useSanityQuery(qryTeam)
           <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="team-member">
               <div class="member-img">
-                <SanityImage :asset-id="member.image.assetId" :max-w="510" class="img-fluid" :alt="member.name" />
+                <SanityImage :asset-id="member.image?.asset?._id" :max-w="510" class="img-fluid" :alt="member.name" />
 
                 <div class="social" v-if="member.details">
                   <template v-if="member.details.socialConnections">

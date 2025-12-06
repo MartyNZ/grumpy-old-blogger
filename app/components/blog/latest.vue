@@ -12,8 +12,11 @@ const { data: posts } = await useSanityQuery(`  *[_type == "post" && draft != tr
     title,
     'slug': slug.current,
     image{
-    'url': asset->url,
-    "assetId":asset->_id
+      asset->{
+        url,
+        _id,
+        metadata
+      }
     },
     'excerpt': array::join(string::split(pt::text(body), "")[0...175], "") + "...",
     publishedDate,
@@ -32,7 +35,13 @@ const { data: posts } = await useSanityQuery(`  *[_type == "post" && draft != tr
       _id,
       'slug':slug.current,
       'name':firstName + ' ' + lastName,
-      image{'assetId':asset->_id,'url':asset->url},
+      image{
+        asset->{
+          _id,
+          url,
+          metadata
+        },
+      }
     },
   } | order(publishedDate desc)[0...${props.number}]`);
 </script>

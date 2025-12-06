@@ -62,8 +62,8 @@ onGlightboxLoaded(() => {
       <div class="p-6">
         <!-- <pre>{{ image }}</pre> -->
         <a :href="image.image.asset.url" data-image="gallery-image" class="preview-link">
-          <SanityImage :asset-id="image.image.assetId" :w="imgDisplay.w" :h="imgDisplay.h" :alt="image.image.altText"
-            auto="format" class="shadow img-fluid" />
+          <SanityImage :asset-id="image.image?.asset?._id" :w="imgDisplay.w" :h="imgDisplay.h"
+            :alt="image.image.altText" auto="format" class="shadow img-fluid" />
         </a>
       </div>
       <div class="image-caption">

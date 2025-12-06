@@ -18,7 +18,7 @@ const props = defineProps({
       <div class="container" v-else-if="section._type == 'services'">
         <SectionsServices :id="section._id" :layout="section.layout" />
       </div>
-      <SectionsCta v-if="section._type == 'cta'" :id="section._id" />
+      <SectionsCta v-else-if="section._type == 'cta'" :id="section._id" />
       <div class="container" v-else-if="section._type == 'features'">
         <SectionsFeatures v-if="section._type == 'features'" :id="section._id" :layout="section.layout" />
       </div>

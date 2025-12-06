@@ -15,7 +15,7 @@ const props = defineProps({
         {{ post.title }}
       </h2>
       <div class="mb-6 ratio ratio-16x9">
-        <SanityImage :assetId="post.image?.asset?._id" class="object-fit-cover" :alt="post.title" />
+        <SanityImage :asset-id="post.image?.asset?._id" class="object-fit-cover" :alt="post.title" />
       </div>
 
       <div class="m-6 flex items-center">

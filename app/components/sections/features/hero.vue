@@ -27,7 +27,7 @@ const props = defineProps({
         </div>
         <div class="col-lg-5 position-relative" data-aos="fade-up" data-aos-delay="200">
           <div class="phone-wrap">
-            <SanityImage :asset-id="features.image.assetId" :alt="features.title" class="img-fluid" />
+            <SanityImage :asset-id="features.image?.asset?._id" :alt="features.title" class="img-fluid" />
           </div>
         </div>
       </div>
@@ -44,11 +44,11 @@ const props = defineProps({
             <NuxtLink v-if="features.cta.linkType === 'Internal'" :to="features.cta.internalLink.link.slug"
               class="btn-get-started mx-2">
               {{
-                features.cta.title }}</NuxtLink>
+              features.cta.title }}</NuxtLink>
             <NuxtLink v-else-if="features.cta.linkType === 'Phone'" :to="`tel:${features.cta.phone.number}`"
               class="btn-get-started mx-2">
               {{
-                features.cta.title }}</NuxtLink>
+              features.cta.title }}</NuxtLink>
             <NuxtLink v-else-if="features.cta.linkType === 'External'" :to="features.cta.externalLink.url"
               class="btn-get-started mx-2" target="_blank">
               {{ features.cta.title }}</NuxtLink>

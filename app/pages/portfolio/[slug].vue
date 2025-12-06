@@ -40,14 +40,14 @@ definePageMeta({
                 <LazyClientOnly>
                   <Swiper :modules="[SwiperNavigation, SwiperPagination]" :navigation="{ enabled: true }"
                     :pagination="{ dynamicBullets: true, clickable: true }">
-                    <template v-for="image in item.images" :key="image.assetId">
+                    <template v-for="image in item.images" :key="image?.asset?._id">
                       <SwiperSlide>
-                        <SanityImage :asset-id="image.assetId" :w="640" :alt="item.title" />
+                        <SanityImage :asset-id="image?.asset?._id" :w="640" :alt="item.title" />
                       </SwiperSlide>
                     </template>
 
                   </Swiper>
-                  </LazyClientOnly>
+                </LazyClientOnly>
               </div>
             </div>
 

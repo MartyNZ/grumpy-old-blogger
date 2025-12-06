@@ -47,7 +47,7 @@ const { data: testimonials } = await useSanityQuery(qryTestimonials)
                     {{ t.body }}
                   </p>
                   <div class="profile mt-auto">
-                    <SanityImage :w="90" :h="90" :asset-id="t.contact.image.assetId" class="testimonial-img"
+                    <SanityImage :w="90" :h="90" :asset-id="t.contact.image?.asset?._id" class="testimonial-img"
                       :alt="t.name" />
                     <h3 v-if="t.contact.name">{{ t.contact.name }}</h3>
                     <h4 v-if="t.organisation.name">{{ t.organisation.name }}</h4>
