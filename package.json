@@ -1,8 +1,7 @@
 {
-  "name": "grumpy-old-blogger",
-  "title": "Grumpy Old Bugger",
-  "private": true,
+  "name": "kitchen-sink",
   "type": "module",
+  "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -10,39 +9,29 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
-  "devDependencies": {
-    "@iconify-json/fa": "^1.2.1",
-    "@iconify-json/solar": "^1.2.2",
-    "@nuxt/fonts": "^0.11.4",
-    "@nuxt/icon": "^1.13.0",
-    "@nuxtjs/color-mode": "^3.5.2",
-    "@nuxtjs/seo": "^3.0.3",
-    "@nuxtjs/tailwindcss": "^6.14.0",
-    "@portabletext/vue": "^1.0.12",
-    "@primevue/nuxt-module": "4.2.5",
-    "@sanity/client": "^7.3.0",
-    "@tailwindcss/container-queries": "^0.1.1",
-    "@vee-validate/nuxt": "^4.15.0",
-    "@vite-pwa/nuxt": "^1.0.1",
-    "@vueuse/nuxt": "^13.2.0",
-    "nitropack": "^2.11.11",
-    "nuxt": "^3.17.4",
-    "nuxt-mail": "^6.0.1",
-    "nuxt-posthog": "^1.6.3",
-    "nuxt-security": "^2.3.0",
-    "vue3-carousel-nuxt": "^1.1.6"
-  },
   "dependencies": {
-    "@nuxtjs/sanity": "^1.13.1",
-    "@pinia/nuxt": "^0.11.0",
-    "@vee-validate/yup": "^4.15.0",
-    "@vueuse/core": "^14.1.0",
-    "nuxt3-meta-pixel": "^1.0.9",
-    "pinia-plugin-persistedstate": "^4.3.0",
-    "primeicons": "^7.0.0"
+    "@nuxt/fonts": "^0.12.1",
+    "@nuxt/icon": "^2.1.0",
+    "@nuxt/image": "^2.0.0",
+    "@nuxt/scripts": "^0.13.0",
+    "@nuxtjs/sanity": "^2.0.0",
+    "@pinia/nuxt": "^0.11.3",
+    "@portabletext/vue": "^1.0.14",
+    "@unhead/vue": "^2.0.19",
+    "@vite-pwa/nuxt": "^1.1.0",
+    "glightbox": "^3.3.1",
+    "isotope-layout": "^3.0.6",
+    "nuxt": "^4.2.1",
+    "nuxt-mail": "^7.0.1",
+    "pinia": "^3.0.4",
+    "usebootstrap": "^3.5.107",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3"
   },
-  "overrides": {
-    "vue": "latest",
-    "vue-router": "latest"
+  "devDependencies": {
+    "@iconify-json/fa": "^1.2.2",
+    "@iconify-json/fa-brands": "^1.2.2",
+    "@iconify-json/fa6-solid": "^1.2.4",
+    "@iconify-json/fa7-solid": "^1.2.3"
   }
 }
