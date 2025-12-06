@@ -113,4 +113,9 @@ export default defineNuxtConfig({
       navigateFallback: "/",
     },
   },
+  routeRules: {
+    "/authors/": {
+      redirect: "/authors/martyn-cook",
+    },
+  },
 });

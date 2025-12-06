@@ -3,11 +3,24 @@ export const qryAuthors = groq`
     _id,
     'slug':slug.current,
     'name':firstName + ' ' + lastName,
-    'imageUrl':image.asset->url,
-    'articles':*[_type == "article"&& references(^._id)]{
+    image{
+      asset->{
+        _id,
+        url,
+        metadata
+      }
+    },
+    'posts':*[_type == "post"&& references(^._id)]{
       _id,
       title,
       'slug':slug.current,
+      image{
+        asset->{
+          _id,
+          url,
+          metadata
+        }
+      },
     }
   } | order(lastName asc)
 `;
@@ -17,17 +30,30 @@ export const qryAuthorBySlug = groq`
     _id,
     'name':firstName + ' ' + lastName,
     'slug':slug.current,
-    'imageUrl':image.asset->url,
+    image{
+      asset->{
+        _id,
+        url,
+        metadata
+      }
+    },
     bio,
     socialConnections[]{
       'url': url + username,
       title,
       iconName,
     },
-      'articles':*[_type == "article"&& references(^._id)]{
+      'posts':*[_type == "post"&& references(^._id)]{
       _id,
       title,
       'slug':slug.current,
+      image{
+        asset->{
+          _id,
+          url,
+          metadata
+        }
+      },
     }
   }
 `;

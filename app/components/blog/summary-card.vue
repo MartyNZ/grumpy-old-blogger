@@ -28,14 +28,15 @@ const props = defineProps({
               <li class="d-flex align-items-center pb-1 gap-1">
                 <Icon name="bi:people" />
                 <template v-for="(a, index) in post.authors" :key="a._id">
-                  <NuxtLink :to="a.slug"><span v-if="index > 0">&nbsp;/&nbsp;</span>{{ a.name }}</NuxtLink>
+                  <NuxtLink :to="`/authors/${a.slug}`"><span v-if="index > 0">&nbsp;/&nbsp;</span>{{ a.name }}
+                  </NuxtLink>
                 </template>
               </li>
             </template>
             <template v-else>
               <li class="d-flex align-items-center pb-1 gap-1">
                 <Icon name="bi:person" />
-                <NuxtLink :to="post.authors[0].slug">{{ post.authors[0].name }}</NuxtLink>
+                <NuxtLink :to="`/authors/${post.authors[0].slug}`">{{ post.authors[0].name }}</NuxtLink>
               </li>
             </template>
             <li class="d-flex align-items-center pb-1 gap-1">

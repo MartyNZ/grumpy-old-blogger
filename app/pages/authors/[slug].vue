@@ -1,40 +1,35 @@
 <script setup>
 import {
-  qryArticleBySlug
-} from "~/queries/articles";
+  qryAuthorBySlug
+} from "~/queries/authors";
 const route = useRoute();
 const routeParams = route.params;
 const data = useSiteSettingsStore();
 const settings = data.settings;
 
-const { data: article } = await useSanityQuery(qryArticleBySlug, {
+const { data: author } = await useSanityQuery(qryAuthorBySlug, {
   slug: routeParams.slug,
 });
-// console.log("Article: ", JSON.stringify(article.value, null, 2))
-// const relatedProducts = article.value.relatedProducts;
-// console.log("relatedProducts: ", JSON.stringify(relatedProducts[0]));
-
-// const articleTags = article.value.tags;
-// console.log("Article Tags: ", JSON.stringify(articleTags));
+// console.log("Author: ", JSON.stringify(author.value, null, 2))
 
 // useSeoMeta({
-//   title: () => article.value.title,
-//   description: () => article.value.excerpt,
-//   ogTitle: () => article.value.title,
-//   ogDescription: () => article.value.excerpt,
-//   ogImage: () => article.value.image.url,
-//   twitterTitle: () => article.value.title,
-//   twitterDescription: () => article.value.excerpt,
-//   twitterImage: () => article.value.image.url,
+//   title: () => author.value.title,
+//   description: () => author.value.excerpt,
+//   ogTitle: () => author.value.title,
+//   ogDescription: () => author.value.excerpt,
+//   ogImage: () => author.value.image?.asset?.url,
+//   twitterTitle: () => author.value.title,
+//   twitterDescription: () => author.value.excerpt,
+//   twitterImage: () => author.value.image?.asset?.url,
 //   twitterCard: "summary_large_image",
 // });
 
 // defineOgImageComponent(
-//   "article",
+//   "author",
 //   {
-//     title: article.value.title,
-//     description: article.value.excerpt,
-//     image: article.value.image.url,
+//     title: author.value.title,
+//     description: author.value.excerpt,
+//     image: author.value.image.url,
 //     siteName: settings.title,
 //     siteLogo: settings.logoUrl,
 //   },
@@ -48,20 +43,18 @@ definePageMeta({
 <template>
   <NuxtLayout name="internal">
     <template #breadcrumb>
-      <AppBreadcrumb :image="article.image" />
+      <AppBreadcrumb :image="author.image" />
     </template>
     <template #default>
       <div id="collection-main" class="container mx-auto p-4 md:p-6">
         <div id="page-layout">
-          <section id="article">
-            <article-content :article="article" />
-          </section>
-          <section id="collections-sidebar" class="sidebar">
+          <section id="author">
+            <div class="author-info">
+              <blog-author :author="author" />
+              <blog-collection-navigation />
+            </div>
             <div class="sticky-top">
-              <!-- <product-promotions /> -->
-              <article-collection-navigation />
-              <!-- <product-showcase /> -->
-              <article-latest number="4" />
+              <blog-latest number="4" />
             </div>
           </section>
         </div>
@@ -69,3 +62,9 @@ definePageMeta({
     </template>
   </NuxtLayout>
 </template>
+<style scoped>
+.author-info {
+  display: flex;
+  gap: 20px;
+}
+</style>
