@@ -40,8 +40,8 @@ const props = defineProps({
               </li>
             </template>
             <li class="d-flex align-items-center pb-1 gap-1">
-              <Icon name="bi:clock" /> <a href="#"><time :datetime="post.publishedDate">{{
-                  post.publishedDate }}</time></a>
+              <Icon name="bi:clock" /> <time :datetime="post.publishedDate">{{
+                post.publishedDate }}</time>
             </li>
           </ul>
         </div>
