@@ -18,6 +18,8 @@
     "@pinia/nuxt": "^0.11.3",
     "@portabletext/vue": "^1.0.14",
     "@unhead/vue": "^2.0.19",
+    "@vee-validate/nuxt": "^4.15.1",
+    "@vee-validate/yup": "^4.15.1",
     "@vite-pwa/nuxt": "^1.1.0",
     "glightbox": "^3.3.1",
     "isotope-layout": "^3.0.6",

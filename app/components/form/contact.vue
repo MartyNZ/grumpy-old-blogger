@@ -74,98 +74,38 @@ onUnmounted(() => {
 <template>
   <div>
     <form v-if="!messageSent" @submit="onSubmit">
-      <div v-if="errorMessage" class="mb-3 p-3 bg-red-100 text-red-700 rounded">
+      <div v-if="errorMessage" class="alert alert-danger">
         {{ errorMessage }}
       </div>
-      <div class="mb-3 flex flex-col">
-        <label for="name">Name </label>
-        <InputText v-model="name" type="text" id="name" :class="{ 'p-invalid': errors.name }" />
-        <small class="p-error">{{ errors.name }}</small>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input v-model="name" type="text" id="name" class="form-control" :class="{ 'is-invalid': errors.name }" />
+        <div class="invalid-feedback">{{ errors.name }}</div>
       </div>
-      <div class="mb-3 flex flex-col">
-        <label for="email">Email address </label>
-        <InputText v-model="email" type="email" id="email" :class="{ 'p-invalid': errors.email }" />
-        <small class="p-error">{{ errors.email }}</small>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input v-model="email" type="email" id="email" class="form-control" :class="{ 'is-invalid': errors.email }" />
+        <div class="invalid-feedback">{{ errors.email }}</div>
       </div>
-      <div class="mb-3 flex flex-col">
-        <label for="message">Message</label>
-        <Textarea v-model="message" id="message" rows="3"></Textarea>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea v-model="message" id="message" rows="3" class="form-control"
+          :class="{ 'is-invalid': errors.message }"></textarea>
+        <div class="invalid-feedback">{{ errors.message }}</div>
       </div>
-      <div class="mx-auto w-[20em] py-2">
-        <Button type="submit" class="submit-btn flex w-full items-center gap-4"
-          :class="{ 'invalid': Object.keys(errors).length > 0 }" :disabled="isSubmitting">
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
           <span v-if="!isSubmitting">Send</span>
           <span v-else>Sending...</span>
-          <span>
-            <ProgressSpinner v-if="isSubmitting" style="width: 20px; height: 20px" />
-            <IconsFaDuotonePaperPlane v-else />
-          </span>
-        </Button>
+          <span v-if="isSubmitting" class="spinner-border spinner-border-sm ms-2" role="status"
+            aria-hidden="true"></span>
+        </button>
       </div>
     </form>
 
-    <div v-if="messageSent" class="bg-surface-50 mb-6 grid h-full w-full grid-flow-col rounded-lg">
-      <div class="text-center text-xl text-green-500">
-        Message sent! Check your inbox.
-      </div>
+    <div v-if="messageSent" class="alert alert-success text-center">
+      Message sent! Check your inbox.
     </div>
   </div>
 </template>
-<!-- <style>
-.submit-btn.invalid {
-  animation: shake 0.5s;
-  background-color: red;
-  /* When the animation is finished, start again */
-  animation-iteration-count: infinite;
-}
 
-@keyframes shake {
-  0% {
-    transform: translate(1px, 1px);
-  }
-
-  10% {
-    transform: translate(-1px, -2px);
-  }
-
-  20% {
-    transform: translate(-3px, 0px);
-  }
-
-  30% {
-    transform: translate(3px, 2px);
-  }
-
-  40% {
-    transform: translate(1px, -1px);
-  }
-
-  50% {
-    transform: translate(-1px, 2px);
-  }
-
-  60% {
-    transform: translate(-3px, 1px);
-  }
-
-  70% {
-    transform: translate(3px, 1px);
-  }
-
-  80% {
-    transform: translate(-1px, -1px);
-  }
-
-  90% {
-    transform: translate(1px, 2px);
-  }
-
-  100% {
-    transform: translate(1px, -2px);
-  }
-}
-
-.submit-btn:hover {
-  transform: scale(1.05);
-}
-</style> -->

@@ -8,10 +8,10 @@ useSeoMeta({
   ogTitle: page.value.title,
   description: page.value.seo.description,
   ogDescription: page.value.seo.description,
-  ogImage: page.value.seo.image.url,
+  ogImage: page.value.seo.image?.asset?.url,
   twitterTitle: page.value.title,
   twitterDescription: page.value.seo.description,
-  twitterImage: page.value.seo.image.url,
+  twitterImage: page.value.seo.image?.asset?.url,
   twitterCard: "summary_large_image",
 });
 

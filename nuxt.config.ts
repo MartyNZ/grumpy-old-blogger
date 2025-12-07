@@ -13,7 +13,25 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "nuxt-mail",
     "@vite-pwa/nuxt",
+    "@vee-validate/nuxt",
   ],
+  vite: {
+    server: {
+      allowedHosts: [
+        "b5phpis0cqns.share.zrok.io",
+        "https://grumpyoldbugger.com",
+      ],
+    },
+  },
+  veeValidate: {
+    // disable or enable auto imports
+    autoImports: true,
+    componentNames: {
+      Form: "vForm",
+      Field: "vField",
+      ErrorMessage: "vErrorMessage",
+    },
+  },
   css: ["~/assets/css/main.css", "glightbox/dist/css/glightbox.min.css"],
   sanity: {
     projectId: process.env.SANITY_STUDIO_PROJECT_ID,
