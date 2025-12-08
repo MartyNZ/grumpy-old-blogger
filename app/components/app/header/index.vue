@@ -1,6 +1,4 @@
 <script setup>
-const route = useRoute();
-const fullPath = route.fullPath;
 const data = useSiteSettingsStore();
 const settings = data.settings;
 </script>
@@ -21,3 +19,67 @@ const settings = data.settings;
     </div>
   </header>
 </template>
+
+<style scoped>
+.container-fluid {
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 24px 0;
+}
+
+@media (max-width: 1200px) {
+  .header {
+    padding: 12px 0;
+  }
+}
+
+.header.sticked {
+  background: rgba(var(--color-default-rgb), 0.9);
+  padding: 12px 0;
+}
+
+.header .logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+.header .logo h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-secondary);
+  margin: 0;
+}
+
+/*--------------------------------------------------------------
+# Mobile Navigation
+--------------------------------------------------------------*/
+@media (max-width: 1279px) {
+  .mobile-nav-show {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 0;
+    transition: 0.5s;
+  }
+
+  .mobile-nav-hide {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 0;
+    transition: 0.5s;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 9999;
+  }
+}
+</style>

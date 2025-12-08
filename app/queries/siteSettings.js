@@ -16,6 +16,10 @@ export const qrySiteSettings = groq`
       metadata
     }
   },
+  clrPrimary,
+  clrSecondary,
+  fontPrimary,
+  fontSecondary,
   description,
   'email':primaryLocation->email,
   'address':primaryLocation->address,
@@ -168,16 +172,22 @@ export const qryHomePage = groq`
   *[_type == 'homepage'][0]{
     title,
     'image':{
-      'url':headerImage.asset->url,
-      'assetId':headerImage.asset->_id
+      asset->{
+        url,
+        _id,
+        metadata
+      }
     },
     body,
     _id,
     seo{
       description,
       image{
-        'url':asset->url,
-        'assetId': asset->_id
+        asset->{
+          url,
+          _id,
+          metadata
+        }
       }
     },
     sections[]->{
@@ -193,16 +203,22 @@ export const qryContactPage = groq`
   *[_type == 'contactpage'][0]{
     title,
     image{
-      'url':asset->url,
-      'assetId':asset->_id
+      asset->{
+        url,
+        _id,
+        metadata
+      }
     },
     content,
     _id,
     seo{
       description,
       image{
-        'url':asset->url,
-        'assetId': asset->_id
+        asset->{
+          url,
+          _id,
+          metadata
+        }
       }
     },
     sections[]->{

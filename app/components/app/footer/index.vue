@@ -51,7 +51,7 @@ const otherNav = navigation.otherNav
             </ul>
           </div>
 
-          <div class="col-lg-2 col-6 footer-links">
+          <!-- <div class="col-lg-2 col-6 footer-links">
             <h4>{{ otherNav.name }}</h4>
             <ul>
               <li v-for="link in otherNav.navigationLinks" :key="link._key">
@@ -82,7 +82,7 @@ const otherNav = navigation.otherNav
               <strong>Email:</strong> {{ settings.email }}<br>
             </p>
 
-          </div>
+          </div> -->
 
         </div>
       </div>
