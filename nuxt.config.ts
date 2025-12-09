@@ -54,14 +54,18 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "Nova",
+      title: process.env.NUXT_SITE_NAME,
       htmlAttrs: {
         lang: "en",
       },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { hid: "description", name: "description", content: "" },
+        {
+          hid: "description",
+          name: "description",
+          content: process.env.NUXT_SITE_DESCRIPTION,
+        },
       ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/assets/img/favicon.ico" },
@@ -83,7 +87,7 @@ export default defineNuxtConfig({
       description:
         process.env.NUXT_SITE_DESCRIPTION ||
         "Complete custom CMS/Web-App marketing site solution.",
-      categories: ["entertainment", "lifestyle", "shopping"],
+      categories: ["entertainment", "lifestyle"],
       display_override: ["standalone", "window-controls-overlay", "fullscreen"],
       theme_color: process.env.NUXT_SITE_THEME_COLOR,
       orientation: "portrait",
@@ -95,32 +99,22 @@ export default defineNuxtConfig({
           url: "/blog",
           description: "A collection of posts and articles from our team",
         },
-        {
-          name: "Services",
-          url: "/services",
-          description: "Learn more abobut the services we can provide",
-        },
-        {
-          name: "Testimonials",
-          url: "/services#testimonials",
-          description: "Learn more abobut the services we can provide",
-        },
       ],
       icons: [
         {
-          src: "/assets/imgs/logo_192.png",
+          src: "/assets/img/logo_192.png",
           sizes: "192x192",
           type: "image/png",
           purpose: "any",
         },
         {
-          src: "/assets/imgs/logo_512.png",
+          src: "/assets/img/logo_512.png",
           sizes: "512x512",
           type: "image/png",
           purpose: "any",
         },
         {
-          src: "/assets/imgs/logo_maskable.png",
+          src: "/assets/img/logo_maskable.png",
           sizes: "196x196",
           type: "image/png",
           purpose: "maskable",
