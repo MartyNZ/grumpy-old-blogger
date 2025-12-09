@@ -104,55 +104,7 @@ section {
   margin-bottom: 0;
 }
 
-/*--------------------------------------------------------------
-# Breadcrumbs
---------------------------------------------------------------*/
-.breadcrumbs {
-  padding: 140px 0 60px 0;
-  min-height: 30vh;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.breadcrumbs:before {
-  content: "";
-  background-color: rgba(27, 47, 69, 0.7);
-  position: absolute;
-  inset: 0;
-}
-.breadcrumbs h2 {
-  font-size: 56px;
-  font-weight: 500;
-  color: #fff;
-  font-family: var(--font-secondary);
-}
-.breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0 0 10px 0;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-primary);
-}
-.breadcrumbs ol a {
-  color: rgba(255, 255, 255, 0.8);
-  transition: 0.3s;
-}
-.breadcrumbs ol a:hover {
-  text-decoration: underline;
-}
-.breadcrumbs ol li + li {
-  padding-left: 10px;
-}
-.breadcrumbs ol li + li::before {
-  display: inline-block;
-  padding-right: 10px;
-  color: #fff;
-  content: "/";
-}
+
 
 /*--------------------------------------------------------------
 # Scroll top button
@@ -164,7 +116,7 @@ section {
   right: 15px;
   bottom: 15px;
   z-index: 99999;
-  background: var(--color-primary);
+  background: var(--color-secondary);
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -176,7 +128,7 @@ section {
   line-height: 0;
 }
 .scroll-top:hover {
-  background: rgba(var(--color-primary-rgb), 0.8);
+  background: rgba(var(--color-secondary-rgb), 0.8);
   color: #fff;
 }
 .scroll-top.active {
@@ -200,7 +152,7 @@ section {
   position: fixed;
   top: calc(50% - 30px);
   left: calc(50% - 30px);
-  border: 6px solid var(--color-primary);
+  border: 6px solid var(--color-secondary);
   border-top-color: #fff;
   border-radius: 50%;
   width: 60px;

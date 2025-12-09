@@ -165,7 +165,7 @@ const mainNav = data.navigation.mainNav;
     inset: 0;
     padding: 50px 0 10px 0;
     margin: 0;
-    background: rgba(var(--color-default-rgb), 0.9);
+    background: rgba(var(--color-secondary-rgb), 0.9);
     overflow-y: auto;
     transition: 0.3s;
     z-index: 9998;
@@ -205,7 +205,7 @@ const mainNav = data.navigation.mainNav;
     display: none;
     padding: 10px 0;
     margin: 10px 20px;
-    background-color: rgba(var(--color-default-rgb), 0.9);
+    background-color: rgba(var(--color-secondary-rgb), 0.9);
   }
 
   .navbar .dropdown>.dropdown-active,

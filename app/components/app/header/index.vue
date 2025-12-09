@@ -41,7 +41,7 @@ const settings = data.settings;
 }
 
 .header.sticked {
-  background: rgba(var(--color-default-rgb), 0.9);
+  background: rgba(var(--color-secondary-rgb), 0.9);
   padding: 12px 0;
 }
 
@@ -61,6 +61,13 @@ const settings = data.settings;
 /*--------------------------------------------------------------
 # Mobile Navigation
 --------------------------------------------------------------*/
+@media (min-width: 1280px) {
+
+  .mobile-nav-show,
+  .mobile-nav-hide {
+    display: none;
+  }
+}
 @media (max-width: 1279px) {
   .mobile-nav-show {
     color: rgba(255, 255, 255, 0.9);

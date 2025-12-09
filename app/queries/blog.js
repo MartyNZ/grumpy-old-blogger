@@ -254,31 +254,6 @@ export const qryBlogCollectionNavigation = groq`
       _id,
       title,
       'slug':slug.current,
-      category->{
-        _id,
-        title,
-        'slug':slug.current,
-        image{
-          asset->{
-            url,
-            _id,
-            metadata
-          }
-        },
-        description,
-        'count':count(*[_type == 'blog' && references(^._id)])
-      },
-      collections[]->{
-        _id,
-        title,
-        'slug':slug.current,
-        image{
-          asset->{
-            url,
-            _id,
-            metadata
-          }
-        },
         parentCollection->{
           _id,
           title,
@@ -307,7 +282,6 @@ export const qryBlogCollectionNavigation = groq`
         },
       }
     }
-  }
 `;
 
 export const qryBlogCount = groq`

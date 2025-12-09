@@ -54,10 +54,10 @@ definePageMeta({
             <blog-content :post="post" />
           </section>
           <section id="collections-sidebar" class="sidebar">
-            <div>
-              <!-- <product-promotions /> -->
+            <div class="d-none d-lg-block">
               <blog-collection-navigation />
-              <!-- <product-showcase /> -->
+            </div>
+            <div>
               <blog-sidebar-latest number="4" />
             </div>
           </section>

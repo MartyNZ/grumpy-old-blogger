@@ -33,10 +33,10 @@ const { data: collection } = await useSanityQuery(qryPostsByCategory, {
             <blog-list :posts="collection.posts" />
           </section>
           <section id="posts-sidebar" class="sidebar">
-            <div>
-              <!-- <product-promotions /> -->
+            <div class="d-none d-lg-block">
               <blog-collection-navigation />
-              <!-- <product-showcase /> -->
+            </div>
+            <div>
               <blog-sidebar-latest number="4" />
             </div>
           </section>
