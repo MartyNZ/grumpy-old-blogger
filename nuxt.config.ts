@@ -84,9 +84,7 @@ export default defineNuxtConfig({
     manifest: {
       name: process.env.NUXT_SITE_NAME,
       short_name: process.env.NUXT_SITE_NAME,
-      description:
-        process.env.NUXT_SITE_DESCRIPTION ||
-        "Complete custom CMS/Web-App marketing site solution.",
+      description: process.env.NUXT_SITE_DESCRIPTION,
       categories: ["entertainment", "lifestyle"],
       display_override: ["standalone", "window-controls-overlay", "fullscreen"],
       theme_color: process.env.NUXT_SITE_THEME_COLOR,
@@ -95,9 +93,15 @@ export default defineNuxtConfig({
       start_url: process.env.NUXT_SITE_PUBLISHED_URL,
       shortcuts: [
         {
+          name: "About",
+          url: "/about",
+          description: "Allow me to introduce myself...",
+        },
+        {
           name: "Blog",
           url: "/blog",
-          description: "A collection of posts and articles from our team",
+          description:
+            "The semi-demented rantings of an over opinionated grumpy old blogger.",
         },
       ],
       icons: [
@@ -123,6 +127,19 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: "/",
+      runtimeCaching: [
+        {
+          urlPattern: ({ request }) => request.mode === "navigate",
+          handler: "NetworkFirst",
+          options: {
+            cacheName: "pages",
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+            },
+          },
+        },
+      ],
     },
   },
   routeRules: {
