@@ -94,7 +94,7 @@ onUnmounted(() => {
         <div class="invalid-feedback">{{ errors.message }}</div>
       </div>
       <div class="d-grid">
-        <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
+        <button type="submit" class="btn btn-secondary" :disabled="isSubmitting">
           <span v-if="!isSubmitting">Send</span>
           <span v-else>Sending...</span>
           <span v-if="isSubmitting" class="spinner-border spinner-border-sm ms-2" role="status"
