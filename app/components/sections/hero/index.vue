@@ -23,7 +23,7 @@ onGlightboxLoaded(() => {
         <div class="col-xl-4">
           <h2 data-aos="fade-up">{{ hero.title }}</h2>
           <blockquote data-aos="fade-up" data-aos-delay="100">
-            <SanityContent :blocks="hero.content" />
+            <SanityContent :value="hero.content" />
           </blockquote>
           <AppButtons :buttons="hero.buttons" />
         </div>
