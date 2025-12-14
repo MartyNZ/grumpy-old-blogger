@@ -21,7 +21,7 @@ onGlightboxLoaded(() => {
     <div class="container">
       <div class="row">
         <div class="col-xl-4">
-          <h2 data-aos="fade-up">{{ hero.title }}</h2>
+          <h3 data-aos="fade-up">{{ hero.title }}</h3>
           <blockquote data-aos="fade-up" data-aos-delay="100">
             <SanityContent :value="hero.content" />
           </blockquote>
@@ -31,3 +31,8 @@ onGlightboxLoaded(() => {
     </div>
   </section>
 </template>
+<style scoped>
+h3 {
+  text-wrap: balanced;
+}
+</style>
