@@ -34,6 +34,6 @@ onGlightboxLoaded(() => {
 <style scoped>
 h3 {
   color: white;
-  text-wrap: balanced;
+  text-wrap: balance;
 }
 </style>
