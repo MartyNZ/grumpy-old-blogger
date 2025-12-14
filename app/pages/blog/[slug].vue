@@ -50,7 +50,7 @@ definePageMeta({
     <template #default>
       <div id="collection-main" class="container mx-auto p-4 md:p-6">
         <div id="page-layout">
-          <section id="post">
+          <section id="post" class="mt-8">
             <blog-content :post="post" />
           </section>
           <section id="collections-sidebar" class="sidebar">
@@ -66,3 +66,25 @@ definePageMeta({
     </template>
   </NuxtLayout>
 </template>
+<style lang="css">
+#collection-main {
+  container-type: inline-size;
+  margin-bottom: 1em;
+}
+
+#page-layout {
+  display: grid;
+  gap: 1.5em;
+  grid-template-columns: 1fr;
+}
+
+@container (width > 768px) {
+  #page-layout {
+    grid-template-columns: 70% 1fr;
+  }
+}
+
+.sidebar {
+  height: 100%;
+}
+</style>

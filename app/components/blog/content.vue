@@ -32,7 +32,7 @@ const props = defineProps({
           </span>
         </template>
       </div>
-      <div class="sanity-content">
+      <div class="sanity-content mt-5">
         <SanityContent :value="post.body" />
       </div>
     </div>
