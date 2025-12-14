@@ -33,6 +33,7 @@ onGlightboxLoaded(() => {
 </template>
 <style scoped>
 h3 {
+  color: white;
   text-wrap: balanced;
 }
 </style>
