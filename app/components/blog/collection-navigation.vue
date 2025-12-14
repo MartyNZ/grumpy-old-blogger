@@ -7,7 +7,7 @@ const { data: posts } = await useSanityQuery(qryBlogCount)
 <template>
   <div class="sidebar-item categories">
     <h3 class="sidebar-title">
-      Categories
+      Collections
     </h3>
     <!-- <pre>{{ postCollectionNavigation }}</pre> -->
     <ul class="mt-2 ps-3">
