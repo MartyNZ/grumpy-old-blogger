@@ -51,10 +51,14 @@ definePageMeta({
           <section id="author">
             <div class="author-info">
               <blog-author :author="author" />
-              <blog-collection-navigation />
             </div>
-            <div class="sticky-top">
+            <div class="author-posts">
               <blog-latest number="4" />
+            </div>
+          </section>
+          <section id="collections-sidebar" class="sidebar">
+            <div class="d-none d-lg-block sticky-top">
+              <blog-collection-navigation />
             </div>
           </section>
         </div>
@@ -62,9 +66,25 @@ definePageMeta({
     </template>
   </NuxtLayout>
 </template>
-<style scoped>
-.author-info {
-  display: flex;
-  gap: 20px;
+<style lang="css">
+#collection-main {
+  container-type: inline-size;
+  margin-bottom: 1em;
+}
+
+#page-layout {
+  display: grid;
+  gap: 1.5em;
+  grid-template-columns: 1fr;
+}
+
+@container (width > 768px) {
+  #page-layout {
+    grid-template-columns: 70% 1fr;
+  }
+}
+
+.sidebar {
+  height: 100%;
 }
 </style>

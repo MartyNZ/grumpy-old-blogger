@@ -36,16 +36,36 @@ const props = defineProps({
   background-color: #fff;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   border-radius: 0.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding: 0.75rem;
   height: 100%;
+  max-width: 20em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+    align-items: center;
+  }
+  
+  @media (min-width: 768px) {
+    .author-card {
+    flex-direction: row;
+    max-width: 40rem;
+      align-items: center;
+    }
+    
+    .author-bio {
+      align-self: flex-start;
+      text-align: left;
+    }
+    
+    .author-link {
+      place-content: flex-start;
+    }
 }
 .author-detail{
 }
 .photo-wrapper {
   padding: 0.5rem;
+  width: 100%;
+    margin-inline: auto;
 }
 
 .author-image {
@@ -57,8 +77,7 @@ const props = defineProps({
   aspect-ratio: 1 / 1;
 }
 .author-bio {
-  justify-self: end;
-  padding-inline:.5em;
+    padding-inline: 0.5em;
 }
 .author-info {
   padding: 0.5rem;

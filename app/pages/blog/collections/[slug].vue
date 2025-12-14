@@ -29,7 +29,6 @@ const { data: collection } = await useSanityQuery(qryPostsByCategory, {
               {{ collection.name }}
             </h1>
             <SanityContent v-if="collection.description" :blocks="collection.description" />
-            <!-- <pre>{{ collection.posts }}</pre> -->
             <blog-list :posts="collection.posts" />
           </section>
           <section id="posts-sidebar" class="sidebar">
