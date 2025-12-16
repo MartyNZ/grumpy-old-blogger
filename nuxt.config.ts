@@ -1,8 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { VitePWA } from "vite-plugin-pwa";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
-
+  devtools: {
+    enabled: true,
+  },
   modules: [
     "@nuxt/fonts",
     "@nuxt/icon",
@@ -12,9 +15,17 @@ export default defineNuxtConfig({
     "@nuxtjs/sanity",
     "@pinia/nuxt",
     "nuxt-mail",
-    "@vite-pwa/nuxt",
     "@vee-validate/nuxt",
+    "@nuxtjs/seo",
   ],
+  seo: {
+    // seo utils
+    enabled: true,
+  },
+  sitemap: {
+    enabled: true,
+    sources: ["/api/__sitemap__/urls"],
+  },
   vite: {
     server: {
       allowedHosts: [
@@ -22,6 +33,75 @@ export default defineNuxtConfig({
         "https://grumpyoldbugger.com",
       ],
     },
+    plugins: [
+      VitePWA({
+        registerType: "autoUpdate",
+        manifest: {
+          name: process.env.NUXT_SITE_NAME,
+          short_name: process.env.NUXT_SITE_NAME,
+          description: process.env.NUXT_SITE_DESCRIPTION,
+          categories: ["entertainment", "lifestyle"],
+          display_override: [
+            "standalone",
+            "window-controls-overlay",
+            "fullscreen",
+          ],
+          theme_color: process.env.NUXT_SITE_THEME_COLOR,
+          orientation: "portrait",
+          id: process.env.NUXT_SITE_PUBLISHED_URL,
+          start_url: process.env.NUXT_SITE_PUBLISHED_URL,
+          shortcuts: [
+            {
+              name: "About",
+              url: "/about",
+              description: "Allow me to introduce myself...",
+            },
+            {
+              name: "Blog",
+              url: "/blog",
+              description:
+                "The semi-demented rantings of an over opinionated grumpy old blogger.",
+            },
+          ],
+          icons: [
+            {
+              src: "/assets/img/logo_192.png",
+              sizes: "192x192",
+              type: "image/png",
+              purpose: "any",
+            },
+            {
+              src: "/assets/img/logo_512.png",
+              sizes: "512x512",
+              type: "image/png",
+              purpose: "any",
+            },
+            {
+              src: "/assets/img/logo_maskable.png",
+              sizes: "196x196",
+              type: "image/png",
+              purpose: "maskable",
+            },
+          ],
+        },
+        workbox: {
+          navigateFallback: "/",
+          runtimeCaching: [
+            {
+              urlPattern: ({ request }) => request.mode === "navigate",
+              handler: "NetworkFirst",
+              options: {
+                cacheName: "pages",
+                expiration: {
+                  maxEntries: 10,
+                  maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+                },
+              },
+            },
+          ],
+        },
+      }),
+    ],
   },
   veeValidate: {
     // disable or enable auto imports
@@ -79,72 +159,14 @@ export default defineNuxtConfig({
       ],
     },
   },
-  pwa: {
-    registerType: "autoUpdate",
-    manifest: {
-      name: process.env.NUXT_SITE_NAME,
-      short_name: process.env.NUXT_SITE_NAME,
-      description: process.env.NUXT_SITE_DESCRIPTION,
-      categories: ["entertainment", "lifestyle"],
-      display_override: ["standalone", "window-controls-overlay", "fullscreen"],
-      theme_color: process.env.NUXT_SITE_THEME_COLOR,
-      orientation: "portrait",
-      id: process.env.NUXT_SITE_PUBLISHED_URL,
-      start_url: process.env.NUXT_SITE_PUBLISHED_URL,
-      shortcuts: [
-        {
-          name: "About",
-          url: "/about",
-          description: "Allow me to introduce myself...",
-        },
-        {
-          name: "Blog",
-          url: "/blog",
-          description:
-            "The semi-demented rantings of an over opinionated grumpy old blogger.",
-        },
-      ],
-      icons: [
-        {
-          src: "/assets/img/logo_192.png",
-          sizes: "192x192",
-          type: "image/png",
-          purpose: "any",
-        },
-        {
-          src: "/assets/img/logo_512.png",
-          sizes: "512x512",
-          type: "image/png",
-          purpose: "any",
-        },
-        {
-          src: "/assets/img/logo_maskable.png",
-          sizes: "196x196",
-          type: "image/png",
-          purpose: "maskable",
-        },
-      ],
-    },
-    workbox: {
-      navigateFallback: "/",
-      runtimeCaching: [
-        {
-          urlPattern: ({ request }) => request.mode === "navigate",
-          handler: "NetworkFirst",
-          options: {
-            cacheName: "pages",
-            expiration: {
-              maxEntries: 10,
-              maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
-            },
-          },
-        },
-      ],
-    },
-  },
   routeRules: {
     "/authors/": {
       redirect: "/authors/martyn-cook",
+    },
+  },
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_SITE_PUBLISHED_URL,
     },
   },
 });
