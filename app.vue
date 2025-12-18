@@ -1,7 +1,4 @@
 <script setup>
-import { useSiteSettingsStore } from "~/stores/siteSettingsStore"; // Assuming the path
-import { useHead, computed } from "#imports";
-
 const settingsStore = useSiteSettingsStore();
 
 // Fetch settings
