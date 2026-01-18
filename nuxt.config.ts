@@ -64,9 +64,6 @@ export default defineNuxtConfig({
         "https://grumpyoldbugger.com",
       ],
     },
-    rollupOptions: {
-      external: ["unenv/runtime/mock/noop"],
-    },
   },
   veeValidate: {
     // disable or enable auto imports
