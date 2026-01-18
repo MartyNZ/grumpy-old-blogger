@@ -18,6 +18,37 @@ export default defineNuxtConfig({
     "@vee-validate/nuxt",
     "@nuxtjs/seo",
   ],
+  security: {
+    headers: {
+      contentSecurityPolicy: {
+        "img-src": [
+          "'self'",
+          "data:",
+          "https://cdn.sanity.io/ https://images-api.printify.com/ https://www.facebook.com/",
+        ],
+        "script-src": [
+          "'nonce-{{nonce}}'",
+          // The nonce allows the root script
+          "'strict-dynamic'",
+          // All scripts inserted by the root script will also be allowed
+          "'unsafe-inline'",
+          "'unsafe-eval'",
+          "*.facebook.com",
+          "*.fbcdn.net",
+          "*.facebook.net",
+          "cdn.snipcart.com",
+        ],
+        "frame-ancestors": [
+          "'self'",
+          "http://localhost:3333",
+          "http://localhost:3000",
+          "https://cms.webconnectionz.com/",
+          "https://cms.podifyplus.app",
+          "https://webconnectionz.com/",
+        ],
+      },
+    },
+  },
   seo: {
     // seo utils
     enabled: true,
@@ -36,75 +67,6 @@ export default defineNuxtConfig({
     rollupOptions: {
       external: ["unenv/runtime/mock/noop"],
     },
-    plugins: [
-      // VitePWA({
-      //   registerType: "autoUpdate",
-      //   manifest: {
-      //     name: process.env.NUXT_SITE_NAME,
-      //     short_name: process.env.NUXT_SITE_NAME,
-      //     description: process.env.NUXT_SITE_DESCRIPTION,
-      //     categories: ["entertainment", "lifestyle"],
-      //     display_override: [
-      //       "standalone",
-      //       "window-controls-overlay",
-      //       "fullscreen",
-      //     ],
-      //     theme_color: process.env.NUXT_SITE_THEME_COLOR,
-      //     orientation: "portrait",
-      //     id: process.env.NUXT_SITE_PUBLISHED_URL,
-      //     start_url: process.env.NUXT_SITE_PUBLISHED_URL,
-      //     shortcuts: [
-      //       {
-      //         name: "About",
-      //         url: "/about",
-      //         description: "Allow me to introduce myself...",
-      //       },
-      //       {
-      //         name: "Blog",
-      //         url: "/blog",
-      //         description:
-      //           "The semi-demented rantings of an over opinionated grumpy old blogger.",
-      //       },
-      //     ],
-      //     icons: [
-      //       {
-      //         src: "/assets/img/logo_192.png",
-      //         sizes: "192x192",
-      //         type: "image/png",
-      //         purpose: "any",
-      //       },
-      //       {
-      //         src: "/assets/img/logo_512.png",
-      //         sizes: "512x512",
-      //         type: "image/png",
-      //         purpose: "any",
-      //       },
-      //       {
-      //         src: "/assets/img/logo_maskable.png",
-      //         sizes: "196x196",
-      //         type: "image/png",
-      //         purpose: "maskable",
-      //       },
-      //     ],
-      //   },
-      //   workbox: {
-      //     navigateFallback: "/",
-      //     runtimeCaching: [
-      //       {
-      //         urlPattern: ({ request }) => request.mode === "navigate",
-      //         handler: "NetworkFirst",
-      //         options: {
-      //           cacheName: "pages",
-      //           expiration: {
-      //             maxEntries: 10,
-      //             maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
-      //           },
-      //         },
-      //       },
-      //     ],
-      //   },
-      // }),
-    ],
   },
   veeValidate: {
     // disable or enable auto imports
